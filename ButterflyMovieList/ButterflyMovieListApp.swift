@@ -25,7 +25,7 @@ struct ButterflyMovieListApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SearchView()
         }
         .modelContainer(sharedModelContainer)
     }

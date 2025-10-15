@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		85A5D58E2EA00F5B007ACC33 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 85A5D58D2EA00F5B007ACC33 /* Alamofire */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		85A5D5702EA004D7007ACC33 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,9 +33,24 @@
 		85A5D5792EA004D7007ACC33 /* ButterflyMovieListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ButterflyMovieListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		85A5D5972EA011F1007ACC33 /* Exceptions for "ButterflyMovieList" folder in "ButterflyMovieListTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MovieAppModules/MovieSearch/Service/MovieSearchService.swift,
+				MovieAppModules/MovieSearch/ViewModel/MovieSearchViewModel.swift,
+				NetworkCore/NetworkManager/NetworkManager.swift,
+			);
+			target = 85A5D56E2EA004D7007ACC33 /* ButterflyMovieListTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		85A5D5622EA004D5007ACC33 /* ButterflyMovieList */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				85A5D5972EA011F1007ACC33 /* Exceptions for "ButterflyMovieList" folder in "ButterflyMovieListTests" target */,
+			);
 			path = ButterflyMovieList;
 			sourceTree = "<group>";
 		};
@@ -52,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85A5D58E2EA00F5B007ACC33 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +132,7 @@
 			);
 			name = ButterflyMovieList;
 			packageProductDependencies = (
+				85A5D58D2EA00F5B007ACC33 /* Alamofire */,
 			);
 			productName = ButterflyMovieList;
 			productReference = 85A5D5602EA004D5007ACC33 /* ButterflyMovieList.app */;
@@ -195,6 +216,9 @@
 			);
 			mainGroup = 85A5D5572EA004D5007ACC33;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				85A5D58C2EA00F5B007ACC33 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 85A5D5612EA004D5007ACC33 /* Products */;
 			projectDirPath = "";
@@ -550,6 +574,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		85A5D58C2EA00F5B007ACC33 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://www.github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		85A5D58D2EA00F5B007ACC33 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85A5D58C2EA00F5B007ACC33 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 85A5D5582EA004D5007ACC33 /* Project object */;
 }
