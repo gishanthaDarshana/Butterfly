@@ -46,3 +46,14 @@ A SwiftUI-based iOS app using SwiftData for offline support, MVVM architecture, 
 
 - App switches between local and remote data sources based on network status
 - All network calls use the generic network layer
+
+## ScreenShots
+
+<img width="1179" height="2556" alt="Simulator Screenshot - iPhone 16 - 2025-10-17 at 01 43 05" src="https://github.com/user-attachments/assets/b581c325-8987-4070-ba5b-16ea1eee79f8" />
+
+<img width="1179" height="2556" alt="Simulator Screenshot - iPhone 16 - 2025-10-17 at 01 43 13" src="https://github.com/user-attachments/assets/cfb1a37e-53af-46a9-9261-5e4df7ab66b0" />
+
+<img width="1179" height="2556" alt="Simulator Screenshot - iPhone 16 - 2025-10-17 at 01 44 00" src="https://github.com/user-attachments/assets/53feb9fb-9167-4c2d-ab23-1ea9f04979f4" />
+
+<img width="1179" height="2556" alt="Simulator Screenshot - iPhone 16 - 2025-10-17 at 01 44 15" src="https://github.com/user-attachments/assets/7b2bb485-f14e-48bd-8fc2-8cea18d01225" />
+
