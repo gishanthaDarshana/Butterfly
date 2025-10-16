@@ -9,12 +9,7 @@ import Foundation
 
 typealias MovieSearchResult = Result<MovieSearchResponse, MovieSearchError>
 
-enum MovieSearchError: Error {
-    case invalidResponse
-    case noData
-    case networkError(error : NetworkError)
-}
-
 protocol MovieSearchProtocol {
     func fetchMovies(query: String, page: Int) async throws -> MovieSearchResult
 }
+

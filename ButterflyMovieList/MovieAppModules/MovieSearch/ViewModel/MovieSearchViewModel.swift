@@ -13,13 +13,15 @@ class MovieSearchViewModel : ObservableObject {
     @Published var isLoading: Bool = false
     @Published var movies: [Movie] = []
     @Published var movieSearchQuery : String = ""
+    @Published var showErrorToast: Bool = false
+    @Published var errorMessage: String = ""
     
     var cancellables = Set<AnyCancellable>()
     var currentPage: Int = 1
-    var movieService : MovieSearchProtocol
-    
-    init(movieService: MovieSearchProtocol = MovieSearchService()) {
-        self.movieService = movieService
+    private let repository: MovieRepositoryProtocol
+        
+    init(repository: MovieRepositoryProtocol) {
+        self.repository = repository
     }
     
     func startListningForSearchTextChanges() {
@@ -36,15 +38,16 @@ class MovieSearchViewModel : ObservableObject {
             .store(in: &cancellables)
     }
     
-    func searchMovies(query: String) async {
-        guard !query.isEmpty else {
-            self.isLoading = false
-            return
-        }
+    func searchMovies(query: String, page: Int = 1) async {
+        self.showErrorToast = false
+        guard !query.isEmpty else { return }
+        isLoading = true
+        defer { isLoading = false }
+        
         do {
             self.isLoading = true
             
-            let moviesResult = try await movieService.fetchMovies(query: query, page: currentPage)
+            let moviesResult = try await repository.getMovies(query: query, page: currentPage)
             
             switch moviesResult {
             case .success(let response):
@@ -56,20 +59,22 @@ class MovieSearchViewModel : ObservableObject {
                 
             case .failure(let error):
                 self.isLoading = false
+                self.showErrorToast = true
                 switch error {
                 case .invalidResponse:
-                    print("Invalid Response")
+                    errorMessage = "Invalid Response from server."
                 case .noData:
-                    print("No Data Available")
+                    errorMessage = "Invalid Response from server."
                 case .networkError(error: let error):
-                    print("Network Error: \(error.localizedDescription)")
+                    errorMessage = "Network Error: \(error.localizedDescription)"
                 }
             }
         } catch {
-            print("Unexpected Error: \(error)")
+            self.isLoading = false
+            self.showErrorToast = true
+            errorMessage = "Unexpected Error: \(error)"
         }
     }
-    
     
 }
 

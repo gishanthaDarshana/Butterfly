@@ -7,6 +7,9 @@
 
 import Foundation
 import Alamofire
+import Network
+
+
 class NetworkManager : ButterflyHTTPProtocol {
     
     private let baseURL = "https://api.themoviedb.org/3"
@@ -57,3 +60,4 @@ class NetworkManager : ButterflyHTTPProtocol {
     }
     
 }
+

@@ -16,6 +16,11 @@ struct MovieDetailView: View {
             VStack(spacing: 16) {
                 // Backdrop
                 MovieBackdropView(url: movie.backdropURL)
+                    .isVisible(Binding (get: {
+                        movie.backdropURL != nil
+                    }, set: { value in
+                        
+                    }))
 
                 // Poster + Info
                 HStack(alignment: .top, spacing: 16) {
@@ -60,29 +65,16 @@ struct MovieDetailView: View {
 }
 
 // MARK: - Subviews
-
+import SDWebImageSwiftUI
 struct MovieBackdropView: View {
     let url: URL?
 
     var body: some View {
-        AsyncImage(url: url) { phase in
-            switch phase {
-            case .empty:
-                Color.gray.opacity(0.3)
-                    .frame(height: 250)
-            case .success(let image):
-                image
-                    .resizable()
-                    //.scaledToFill()
-                    .frame(height: 250)
-                    //.frame(maxWidth: .infinity)
-                    .clipped()
-            case .failure:
-                Color.gray.frame(height: 250)
-            @unknown default:
-                EmptyView()
-            }
-        }
+        WebImage(url: url)
+            .resizable()
+            .indicator(.activity) // Optional activity indicator while loading
+            .frame(height : 250)
+            .clipped()
     }
 }
 
@@ -90,29 +82,18 @@ struct MoviePosterView: View {
     let url: URL?
 
     var body: some View {
-        AsyncImage(url: url) { phase in
-            switch phase {
-            case .empty:
-                ProgressView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.gray.opacity(0.3))
-                    .cornerRadius(12)
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .cornerRadius(12)
-            case .failure:
-                Image(systemName: "photo")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundColor(.gray)
-                    .background(Color.gray.opacity(0.3))
-                    .cornerRadius(12)
-            @unknown default:
-                EmptyView()
-            }
+        WebImage(url: url, isAnimating: .constant(true)) { image in
+            image
+                .resizable()
+                .scaledToFill()
+                .cornerRadius(12)
+        } placeholder: {
+            ProgressView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.gray.opacity(0.3))
+                .cornerRadius(12)
         }
+
     }
 }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		85A5D58E2EA00F5B007ACC33 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 85A5D58D2EA00F5B007ACC33 /* Alamofire */; };
+		85A5D5F82EA161E3007ACC33 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 85A5D5F72EA161E3007ACC33 /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +38,16 @@
 		85A5D5972EA011F1007ACC33 /* Exceptions for "ButterflyMovieList" folder in "ButterflyMovieListTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				DataBaseCore/DatabaseManagerProtocol.swift,
+				MovieAppModules/MovieSearch/Error/MovieSearchError.swift,
+				MovieAppModules/MovieSearch/MovieRepository/MovieRepository.swift,
+				MovieAppModules/MovieSearch/ResponceModel/MovieSearchResponse.swift,
+				MovieAppModules/MovieSearch/Service/MovieSearchProtocol.swift,
 				MovieAppModules/MovieSearch/Service/MovieSearchService.swift,
 				MovieAppModules/MovieSearch/ViewModel/MovieSearchViewModel.swift,
+				NetworkCore/Errors/NetworkError.swift,
 				NetworkCore/NetworkManager/NetworkManager.swift,
+				NetworkCore/NetworkProtocol/HTTPProtocol.swift,
 			);
 			target = 85A5D56E2EA004D7007ACC33 /* ButterflyMovieListTests */;
 		};
@@ -71,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85A5D5F82EA161E3007ACC33 /* SDWebImageSwiftUI in Frameworks */,
 				85A5D58E2EA00F5B007ACC33 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,6 +142,7 @@
 			name = ButterflyMovieList;
 			packageProductDependencies = (
 				85A5D58D2EA00F5B007ACC33 /* Alamofire */,
+				85A5D5F72EA161E3007ACC33 /* SDWebImageSwiftUI */,
 			);
 			productName = ButterflyMovieList;
 			productReference = 85A5D5602EA004D5007ACC33 /* ButterflyMovieList.app */;
@@ -218,6 +228,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				85A5D58C2EA00F5B007ACC33 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				85A5D5F62EA161E3007ACC33 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 85A5D5612EA004D5007ACC33 /* Products */;
@@ -584,6 +595,14 @@
 				minimumVersion = 5.10.2;
 			};
 		};
+		85A5D5F62EA161E3007ACC33 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -591,6 +610,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 85A5D58C2EA00F5B007ACC33 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		85A5D5F72EA161E3007ACC33 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85A5D5F62EA161E3007ACC33 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

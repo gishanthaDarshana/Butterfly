@@ -7,6 +7,7 @@
 
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct MovieRowView: View {
     let movie: Movie
@@ -14,32 +15,13 @@ struct MovieRowView: View {
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
             // Poster Image
-            AsyncImage(url: movie.posterURL) { phase in
-                switch phase {
-                case .empty:
-                    ProgressView()
-                        .frame(width: 100, height: 150)
-                        .background(Color.gray.opacity(0.3))
-                        .cornerRadius(12)
-                case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 100, height: 150)
-                        .clipped()
-                        .cornerRadius(12)
-                case .failure:
-                    Image(systemName: "photo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 100, height: 150)
-                        .foregroundColor(.gray)
-                        .background(Color.gray.opacity(0.3))
-                        .cornerRadius(12)
-                @unknown default:
-                    EmptyView()
-                }
-            }
+            WebImage(url: movie.posterURL)
+                .resizable()
+                .indicator(.activity) // Optional activity indicator while loading
+                .scaledToFill()
+                .frame(width: 100, height: 150)
+                .clipped()
+                .cornerRadius(12)
 
             // Movie Info
             VStack(alignment: .leading, spacing: 8) {
